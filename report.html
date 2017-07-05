@@ -14910,6 +14910,8 @@ MzMzMzMzs7b8P6YbhZeIVDkmAAAAAElFTkSuQmCC
 This scatter plot and table of pearsons r correlation table indicates that 
 Milk Groceory and ditergents_paper are highly corellated.
 This correlation deny about relavance of detergents_paper which was selected to predict.</p>
+<p>Data for Milk, detergents_paper and Grocery are all positively skewed in which mode&gt;median&gt;mean.
+Apart from that other features also skewed positively.</p>
 
 </div>
 </div>
@@ -20716,8 +20718,9 @@ Once you have performed this implementation, the dataset will be stored in the v
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>Outliers detected using IQR. Followings are outliers occuring in more than one feature that should be removed.
+<p>According to IQR  we are expanding rang removal of datapoint by 1.5, it means that datapoints beyond IRQ are not considered outlier but datapoints listed here are 1.5 times IQR away that is why they are considerd outliers. Those five points are as below.
 [(154, 3), (128, 2), (65, 2), (66, 2), (75, 2)]</p>
+<p>Outliers detected using IQR X 1.5. Followings are outliers occuring in more than one feature that should be removed.</p>
 
 </div>
 </div>
@@ -20749,7 +20752,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Apply PCA by fitting the good data with the same number of dimensions as features</span>
@@ -20761,6 +20764,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 
 <span class="c1"># Generate PCA results plot</span>
 <span class="n">pca_results</span> <span class="o">=</span> <span class="n">vs</span><span class="o">.</span><span class="n">pca_results</span><span class="p">(</span><span class="n">good_data</span><span class="p">,</span> <span class="n">pca</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">pca_results</span><span class="p">[</span><span class="s1">&#39;Explained Variance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -20770,6 +20774,19 @@ Once you have performed this implementation, the dataset will be stored in the v
 <div class="output_wrapper">
 <div class="output">
 
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Dimension 1    0.4430
+Dimension 2    0.7068
+Dimension 3    0.8299
+Dimension 4    0.9311
+Dimension 5    0.9796
+Dimension 6    1.0000
+Name: Explained Variance, dtype: float64
+</pre>
+</div>
+</div>
 
 <div class="output_area"><div class="prompt"></div>
 
@@ -21379,7 +21396,7 @@ RU5ErkJggg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
 Variance expained by first two PC is .7068
-and Variance explained by first four PC in total is 0.8299</p>
+and Variance explained by first four PC in total is 0.9311</p>
 <p>Dimension 1 has most of weight on Detergent_paper, Milk and grocery
 It means that these three freatures are well explained by dimention 1
 While Dimension 2 has most weight on Fresh, Frozen and delicatessn and same pattern can be observed in dimension 3 and 4.
